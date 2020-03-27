@@ -10,13 +10,17 @@ So that I can organize and plan my business
 ### Installation: 
 1- Clone repo 2- Install required dependencies ("npm i")
 
-Usage: Open in console, run start file ("node start.js")
+### Usage: 
+Open in console, run start file ("node start.js")
 
-License: N/A
+## License: 
+N/A
 
-Contributors: Rachel Humble
+## Contributors: 
+Rachel Humble
 
-Tests: N/A
+## Tests: 
+N/A
 
 **Created by: rachelhumble@me.com** 
     
