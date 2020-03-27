@@ -7,19 +7,19 @@ I want to be able to view and manage the departments, roles, and employees in my
 So that I can organize and plan my business
 ```
 
-### Installation: 
+## Installation: 
 1- Clone repo 2- Install required dependencies ("npm i")
 
-### Usage: 
+## Usage: 
 Open in console, run start file ("node start.js")
 
-## License: 
+### License: 
 N/A
 
-## Contributors: 
+### Contributors: 
 Rachel Humble
 
-## Tests: 
+### Tests: 
 N/A
 
 **Created by: rachelhumble@me.com** 
