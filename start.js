@@ -196,8 +196,38 @@ function addRole() {
     });
 }
   //Update:
-function updateEmployeeRole() {
-
+function updateEmployeeRole() { 
+  var query = "SELECT * FROM employee";
+  connection.query(query, (err, res) => {
+    if (err) throw err;
+      inquirer
+        .prompt([
+          {
+            name: "updateChoice",
+            type: "rawlist",
+            message:"Select employee to update",
+            choices: () => {
+              const empList = [];
+              for(let i = 0; i < res.length; i++) {
+                empList.push(res[i].id);
+              }
+              return empList;
+            }
+          },
+          {
+            name: "newRole",
+            message: "Enter new role ID for selected employee",
+            validate: response => response.match(/^[0-9]+$/) ? true: "Please enter a valid numeric role ID"
+          }
+          ]).then(function(answer) {
+            var query = "UPDATE employee SET ? WHERE ?";
+            connection.query(query, [ {roll_id: answer.newRole}, {id: answer.updateChoice} ], (err, res) => {
+              if (err) throw err;
+              console.log(`Role ID updated sucessfully!`);
+              startapp();
+            })
+          })
+  });
 }
   //Delete:
 function deleteEmployee() {
