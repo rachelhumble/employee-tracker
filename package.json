@@ -8,8 +8,7 @@
     "express": "^4.17.1",
     "inquirer": "^7.1.0",
     "mysql": "^2.18.1",
-    "console-table": "^0.1.2",
-    "sql": "^0.78.0"
+    "console-table": "^0.1.2"
   },
   "devDependencies": {},
   "scripts": {
