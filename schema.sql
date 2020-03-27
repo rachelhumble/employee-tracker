@@ -11,10 +11,11 @@ create table employee (
     primary key (id)
 );
 
+drop table roll;
 create table roll (
     id int auto_increment,
     title varchar(30),
-    salary decimal(6,2),
+    salary int,
     department_id int,
     primary key (id)   
 );
