@@ -223,7 +223,7 @@ function updateEmployeeRole() {
             var query = "UPDATE employee SET ? WHERE ?";
             connection.query(query, [ {roll_id: answer.newRole}, {id: answer.updateChoice} ], (err, res) => {
               if (err) throw err;
-              console.log(`Role ID updated sucessfully!`);
+              console.log(`Employee's Role ID updated sucessfully!`);
               startapp();
             })
           })
@@ -231,15 +231,90 @@ function updateEmployeeRole() {
 }
   //Delete:
 function deleteEmployee() {
-
+  var query = "SELECT * FROM employee";
+  connection.query(query, (err, res) => {
+    if (err) throw err;
+      inquirer
+        .prompt([
+          {
+            name: "deleteChoice",
+            type: "rawlist",
+            message:"Select employee to delete",
+            choices: () => {
+              const empList = [];
+              for(let i = 0; i < res.length; i++) {
+                empList.push(res[i].id);
+              }
+              return empList;
+            }
+          }
+          ]).then(function(answer) {
+            var query = "DELETE from employee WHERE ?";
+            connection.query(query, [ {id: answer.deleteChoice} ], (err, res) => {
+              if (err) throw err;
+              console.log(`Employee ID: ${answer.deleteChoice} deleted sucessfully!`);
+              startapp();
+            })
+          })
+  });
 }
 
 function deleteDepartment() {
-
+  var query = "SELECT * FROM department";
+  connection.query(query, (err, res) => {
+    if (err) throw err;
+      inquirer
+        .prompt([
+          {
+            name: "deleteChoice",
+            type: "rawlist",
+            message:"Select department to delete",
+            choices: () => {
+              const deptList = [];
+              for(let i = 0; i < res.length; i++) {
+                deptList.push(res[i].id);
+              }
+              return deptList;
+            }
+          }
+          ]).then(function(answer) {
+            var query = "DELETE from department WHERE ?";
+            connection.query(query, [ {id: answer.deleteChoice} ], (err, res) => {
+              if (err) throw err;
+              console.log(`Department ID: ${answer.deleteChoice} deleted sucessfully!`);
+              startapp();
+            })
+          })
+  });
 }
 
 function deleteRole() {
-  
+  var query = "SELECT * FROM role";
+  connection.query(query, (err, res) => {
+    if (err) throw err;
+      inquirer
+        .prompt([
+          {
+            name: "deleteChoice",
+            type: "rawlist",
+            message:"Select role to delete",
+            choices: () => {
+              const roleList = [];
+              for(let i = 0; i < res.length; i++) {
+                roleList.push(res[i].id);
+              }
+              return roleList;
+            }
+          }
+          ]).then(function(answer) {
+            var query = "DELETE from role WHERE ?";
+            connection.query(query, [ {id: answer.deleteChoice} ], (err, res) => {
+              if (err) throw err;
+              console.log(`Role ID: ${answer.deleteChoice} deleted sucessfully!`);
+              startapp();
+            })
+          })
+  });
 }
   //Exit:
 function exit() {
